@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:meals/models/category.dart';
 import 'screens/categories_screen.dart';
+import 'screens/categories_meals_screen.dart';
+import 'utils/app_routes.dart';
  
 void main() => runApp(MyApp());
  
@@ -22,7 +25,11 @@ class MyApp extends StatelessWidget {
           ),
         )
       ),
-      home: CategorisScreen(),
+//      home: CategorisScreen(),
+      routes: {
+        AppRoutes.HOME: (ctx) => CategorisScreen(),
+        AppRoutes.CATEGORIES_MEALS: (ctx) => CategoryMealsScreen(),
+      },
     );
   }
 }
