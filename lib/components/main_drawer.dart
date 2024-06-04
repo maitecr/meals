@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import '../utils/app_routes.dart';
 
 class MainDrawer extends StatelessWidget {
 
-  Widget _createItem(IconData icon, String label) {
+  Widget _createItem(IconData icon, String label, VoidCallback? onTap) {
     return ListTile(
       leading: Icon(
         icon,
@@ -18,7 +19,7 @@ class MainDrawer extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 
@@ -45,8 +46,16 @@ class MainDrawer extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          _createItem(Icons.restaurant, 'Refeições'),
-          _createItem(Icons.settings, 'Configurações'),
+          _createItem(
+            Icons.restaurant, 
+            'Refeições',
+            () => Navigator.of(context).pushReplacementNamed(AppRoutes.HOME), //função que não adiciona uma nova tela na pilha do app
+            ),
+          _createItem(
+            Icons.settings, 
+            'Configurações',
+            () => Navigator.of(context).pushReplacementNamed(AppRoutes.SETTINGS),
+            ),
         ],
       ),
     );
